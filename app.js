@@ -15,6 +15,6 @@ const puppeteer = require ('puppeteer');
 
         // Buscar listagem de contatos
         await page.waitForSelector("._1KDb8");
-        await DelayNode(5000);
+        await delay(5000);
     }
 })

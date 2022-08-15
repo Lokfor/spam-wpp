@@ -8,8 +8,8 @@
 
 ## Instale as dependências
 
-### $ npm install
+#### $ npm install
 
 ## Execute a aplicação 
 
-### $ npm start
+#### $ npm start

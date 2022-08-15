@@ -29,36 +29,47 @@ const puppeteer = require ('puppeteer');
         // Quantidade de mensagens que será enviada
         const amoutOfMessages = 10;
 
-        // Loop de envio de mensagens
-        for (var i = 0; i < amoutOfMessages; i++) {
-            await page.evaluate (() => {
-                const message = "Mensagem";
-                document.execCommand("insertText", false, message);
-            });
-            await page.click("span[data-testid='send']");
-            await delay(500);
-        }
+        // Selecionar entre mensagem unica ou com alternância
+        const mode = "normal";
+        switch (mode) {
+            case "normal":
 
-        // Loop de envio de mensagens com variação de mensagem
-        const count = 0;
-        for (var i = 0; i < amoutOfMessages; i++) {
-            if(count % 2 == 0){
-                await page.evaluate(() => {
-                const message = "Mensagem 1";
-                document.execCommand("insertText", false, message);
-                });
-                await page.click("span[data-testid='send']");
-                await delay(500);
-                count ++;
-            } else if (count % 2 !== 0){
-                await page.evaluate(() => {
-                const message = "Mensagem 2";
-                document.execCommand("insertText", false, message);
-                });
-                await page.click("span[data-testid='send']");
-                await delay(500);
-                count ++;
-            }
+                // Loop de envio de mensagens
+                for (var i = 0; i < amoutOfMessages; i++) {
+                    await page.evaluate (() => {
+                        const message = "Mensagem";
+                        document.execCommand("insertText", false, message);
+                    });
+                    await page.click("span[data-testid='send']");
+                    await delay(500);
+                };
+                break;
+
+            case "alt":
+
+                // Loop de envio de mensagens com variação de mensagem
+                const count = 0;
+                const qntMessages = amoutOfMessages*2;
+                for (var i = 0; i < qntMessages; i++) {
+                    if(count % 2 == 0){
+                        await page.evaluate(() => {
+                        const message = "Mensagem 1";
+                        document.execCommand("insertText", false, message);
+                        });
+                        await page.click("span[data-testid='send']");
+                        await delay(500);
+                        count ++;
+                    } else if (count % 2 !== 0){
+                        await page.evaluate(() => {
+                        const message = "Mensagem 2";
+                        document.execCommand("insertText", false, message);
+                        });
+                        await page.click("span[data-testid='send']");
+                        await delay(500);
+                        count ++;
+                    }
+        }
+        
     }
 
     } catch (e) {

@@ -16,5 +16,10 @@ const puppeteer = require ('puppeteer');
         // Buscar listagem de contatos
         await page.waitForSelector("._1KDb8");
         await delay(5000);
+
+        // Selecionar contato para envio de mensagem
+        const contactName = "Insira o nome";
+        await page.click(`span[title='${contactName}']`);
+        await page.waitForSelector(".g0rxno12");
     }
 })

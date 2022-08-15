@@ -38,10 +38,34 @@ const puppeteer = require ('puppeteer');
             await page.click("span[data-testid='send']");
             await delay(500);
         }
+
+        // Loop de envio de mensagens com variação de mensagem
+        const count = 0;
+        for (var i = 0; i < amoutOfMessages; i++) {
+            if(count % 2 == 0){
+                await page.evaluate(() => {
+                const message = "Mensagem 1";
+                document.execCommand("insertText", false, message);
+                });
+                await page.click("span[data-testid='send']");
+                await delay(500);
+                count ++;
+            } else if (count % 2 !== 0){
+                await page.evaluate(() => {
+                const message = "Mensagem 2";
+                document.execCommand("insertText", false, message);
+                });
+                await page.click("span[data-testid='send']");
+                await delay(500);
+                count ++;
+            }
+    }
+
     } catch (e) {
         console.error("error mine", e);
     }
-})();
+
+})();      
 
 function delay(time) {
     return new Promise(function (resolve) {

@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Lokfor/spam-wpp/issues"
   },
-  "homepage": "https://github.com/Lokfor/spam-wpp#readme"
+  "homepage": "https://github.com/Lokfor/spam-wpp#readme",
+  "dependencies": {
+    "puppeteer": "^16.1.0"
+  }
 }

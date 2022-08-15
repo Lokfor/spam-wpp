@@ -18,9 +18,9 @@ const puppeteer = require ('puppeteer');
         await delay(5000);
 
         // Selecionar contato para envio de mensagem
-        const contactName = "Insira o nome";
+        const contactName = "Nome do Contato";
         await page.click(`span[title='${contactName}']`);
-        await page.waitForSelector(".g0rxno12");
+        await page.waitForSelector(".uwk68");
 
         // Encontra a barra de mensagem e foca nela
         const editor = await page.$("div[tabindex='-1']");
@@ -48,7 +48,7 @@ const puppeteer = require ('puppeteer');
             case "alt":
 
                 // Loop de envio de mensagens com variação de mensagem
-                const count = 0;
+                let count = 0;
                 const qntMessages = amoutOfMessages*2;
                 for (var i = 0; i < qntMessages; i++) {
                     if(count % 2 == 0){

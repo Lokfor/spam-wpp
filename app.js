@@ -28,5 +28,23 @@ const puppeteer = require ('puppeteer');
 
         // Quantidade de mensagens que será enviada
         const amoutOfMessages = 10;
+
+        // Loop de envio de mensagens
+        for (var i = 0; i < amoutOfMessages; i++) {
+            await page.evaluate (() => {
+                const message = "Mensagem";
+                document.execCommand("insertText", false, message);
+            });
+            await page.click("span[data-testid='send']");
+            await delay(500);
+        }
+    } catch (e) {
+        console.error("error mine", e);
     }
-})
+})();
+
+function delay(time) {
+    return new Promise(function (resolve) {
+        setTimeout(resolve, time);
+    });
+}

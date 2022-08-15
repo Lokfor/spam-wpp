@@ -21,5 +21,9 @@ const puppeteer = require ('puppeteer');
         const contactName = "Insira o nome";
         await page.click(`span[title='${contactName}']`);
         await page.waitForSelector(".g0rxno12");
+
+        // Encontra a barra de mensagem e foca nela
+        const editor = await page.$("div[tabindex='-1']");
+        await editor.focus();
     }
 })

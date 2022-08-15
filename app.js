@@ -25,5 +25,8 @@ const puppeteer = require ('puppeteer');
         // Encontra a barra de mensagem e foca nela
         const editor = await page.$("div[tabindex='-1']");
         await editor.focus();
+
+        // Quantidade de mensagens que será enviada
+        const amoutOfMessages = 10;
     }
 })
